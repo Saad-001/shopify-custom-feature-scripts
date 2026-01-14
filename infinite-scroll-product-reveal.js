@@ -21,7 +21,7 @@
 })();
 
 function initCustomFeature() {
-  document.addEventListener("DOMContentLoaded", function () {
+  const run = () => {
     const infiniteScrollDiv = document.querySelector(
       ".onscroll-product-reveal--trigger"
     );
@@ -73,5 +73,11 @@ function initCustomFeature() {
       });
     });
     observer.observe(infiniteScrollDiv);
-  });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else {
+    run();
+  }
 }
