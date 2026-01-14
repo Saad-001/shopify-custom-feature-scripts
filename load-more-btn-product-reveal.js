@@ -21,7 +21,7 @@
 })();
 
 function initCustomFeature() {
-  document.addEventListener("DOMContentLoaded", function () {
+  const run = () => {
     const loadMoreButtonWrapper = document.querySelector(
       ".load-more-btn-wrapper"
     );
@@ -72,5 +72,11 @@ function initCustomFeature() {
         }
       });
     }
-  });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else {
+    run();
+  }
 }
